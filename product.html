@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ScentLab — Product Details">
+  <title>Product — ScentLab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><span class="logo-text">Scent<span class="logo-accent">Lab</span></span></a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Shop All</a>
+        <a href="shop.html?gender=Men" class="nav-link">Men</a>
+        <a href="shop.html?gender=Women" class="nav-link">Women</a>
+        <a href="shop.html?gender=Unisex" class="nav-link">Unisex</a>
+        <a href="shop.html?tag=bestseller" class="nav-link">Best Sellers</a>
+        <a href="shop.html?tag=new" class="nav-link">New Arrivals</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Language Toggle -->
+        <div class="lang-toggle notranslate">
+          <span class="lang-label">EN</span>
+          <label class="switch">
+            <input type="checkbox" id="langSwitch" onchange="toggleLanguage()">
+            <span class="slider round"></span>
+          </label>
+          <span class="lang-label">AR</span>
+        </div>
+        <button class="action-btn" aria-label="Search" id="searchBtn" onclick="toggleSearch()"><i data-lucide="search"></i></button>
+        <a href="cart.html" class="action-btn" aria-label="Cart"><i data-lucide="shopping-bag"></i><span class="cart-count" id="cartCount">0</span></a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop All</a>
+      <a href="shop.html?gender=Men" class="mobile-nav-link">Men</a>
+      <a href="shop.html?gender=Women" class="mobile-nav-link">Women</a>
+      <a href="shop.html?gender=Unisex" class="mobile-nav-link">Unisex</a>
+    </nav>
+  </header>
+
+  <!-- ============ BREADCRUMB ============ -->
+  <div class="breadcrumb container">
+    <a href="index.html">Home</a> <span>/</span>
+    <a href="shop.html">Shop</a> <span>/</span>
+    <span id="breadcrumbProduct">Product</span>
+  </div>
+
+  <!-- ============ PRODUCT DETAIL ============ -->
+  <main class="pdp-page container">
+    <div class="pdp-layout">
+      <!-- Image -->
+      <div class="pdp-image-col">
+        <div class="pdp-image-wrapper" id="pdpImageWrapper">
+          <img src="assets/images/product-bottle.jpg" alt="" id="pdpImage" class="pdp-image">
+          <div class="pdp-badges" id="pdpBadges"></div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="pdp-info-col">
+        <div class="pdp-inspired" id="pdpInspired">Inspired by —</div>
+        <h1 class="pdp-title" id="pdpTitle">Loading...</h1>
+        <div class="pdp-meta">
+          <span class="pdp-brand" id="pdpBrand"></span>
+          <span class="pdp-divider">·</span>
+          <span class="pdp-gender" id="pdpGender"></span>
+          <span class="pdp-divider">·</span>
+          <span class="pdp-category" id="pdpCategory"></span>
+        </div>
+
+        <div class="pdp-price-block">
+          <span class="pdp-price" id="pdpPrice">₹0</span>
+          <span class="pdp-size-label" id="pdpSizeLabel"></span>
+        </div>
+
+        <!-- Size Selector -->
+        <div class="pdp-section">
+          <label class="pdp-label">Size</label>
+          <div class="size-options" id="sizeOptions"></div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="pdp-section">
+          <label class="pdp-label">Quantity</label>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <input type="number" class="qty-input" id="qtyInput" value="1" min="1" max="10">
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+
+        <!-- Add to Cart -->
+        <button class="btn-add-to-cart" id="addToCartBtn" onclick="addToCart()">
+          <i data-lucide="shopping-bag"></i>
+          ADD TO CART
+        </button>
+
+        <!-- Success message -->
+        <div class="cart-success" id="cartSuccess">
+          <i data-lucide="check-circle"></i> Added to cart!
+          <a href="cart.html">View Cart →</a>
+        </div>
+
+        <div class="pdp-stock" id="pdpStock"><i data-lucide="check"></i> In Stock — Ready to ship</div>
+
+        <!-- Description -->
+        <div class="pdp-description">
+          <h3>Description</h3>
+          <p id="pdpDescription"></p>
+        </div>
+
+        <!-- Scent Notes -->
+        <div class="pdp-notes">
+          <h3>Scent Profile</h3>
+          <div class="notes-pyramid">
+            <div class="note-tier">
+              <span class="note-label">TOP</span>
+              <div class="note-tags" id="topNotes"></div>
+            </div>
+            <div class="note-tier">
+              <span class="note-label">HEART</span>
+              <div class="note-tags" id="heartNotes"></div>
+            </div>
+            <div class="note-tier">
+              <span class="note-label">BASE</span>
+              <div class="note-tags" id="baseNotes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- You May Also Like -->
+    <section class="pdp-related">
+      <h2>You May Also Like</h2>
+      <div class="products-slider" id="relatedSlider"></div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-grid container">
+      <div class="footer-brand">
+        <div class="footer-logo">Scent<span class="logo-accent">Lab</span></div>
+        <p>Premium recreations of the world's most iconic perfumes.</p>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html">All Perfumes</a></li><li><a href="shop.html?tag=bestseller">Best Sellers</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@scentlab.in">hello@scentlab.in</a></li></ul></div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2024 ScentLab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="google_translate_element" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="script.js"></script>
+  <script src="product.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ScentLab — Premium recreations of world-famous perfumes. 100+ fragrances, exceptional quality, affordable luxury.">
+  <title>ScentLab — Premium Perfume Recreations</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ============ ANNOUNCEMENT BAR ============ -->
+  <div class="announcement-bar" id="announcementBar">
+    <button class="announcement-nav prev" aria-label="Previous" onclick="changeAnnouncement(-1)">‹</button>
+    <div class="announcement-wrapper" id="announcementText">
+      <a href="shop.html">FREE Shipping on Orders Above ₹2,000 <span class="arrow-icon">→</span></a>
+    </div>
+    <button class="announcement-nav next" aria-label="Next" onclick="changeAnnouncement(1)">›</button>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Scent<span class="logo-accent">Lab</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="shop.html" class="nav-link">Shop All</a>
+        <a href="shop.html?gender=Men" class="nav-link">Men</a>
+        <a href="shop.html?gender=Women" class="nav-link">Women</a>
+        <a href="shop.html?gender=Unisex" class="nav-link">Unisex</a>
+        <a href="shop.html?tag=bestseller" class="nav-link">Best Sellers</a>
+        <a href="shop.html?tag=new" class="nav-link">New Arrivals</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Toggle -->
+        <div class="lang-toggle notranslate">
+          <span class="lang-label">EN</span>
+          <label class="switch">
+            <input type="checkbox" id="langSwitch" onchange="toggleLanguage()">
+            <span class="slider round"></span>
+          </label>
+          <span class="lang-label">AR</span>
+        </div>
+        <button class="action-btn" aria-label="Search" id="searchBtn" onclick="toggleSearch()">
+          <i data-lucide="search"></i>
+        </button>
+        <a href="cart.html" class="action-btn" aria-label="Cart" id="cartBtn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" onclick="toggleMobileMenu()">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-inner container">
+        <input type="text" id="searchInput" placeholder="Search perfumes..." autocomplete="off">
+        <button class="search-close" onclick="toggleSearch()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop All</a>
+      <a href="shop.html?gender=Men" class="mobile-nav-link">Men</a>
+      <a href="shop.html?gender=Women" class="mobile-nav-link">Women</a>
+      <a href="shop.html?gender=Unisex" class="mobile-nav-link">Unisex</a>
+      <a href="shop.html?tag=bestseller" class="mobile-nav-link">Best Sellers</a>
+      <a href="shop.html?tag=new" class="mobile-nav-link">New Arrivals</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </header>
+
+  
+
+  <style>
+    @media (max-width: 768px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      .page-header { padding: 8rem 1rem 3rem !important; }
+    }
+  </style>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="page-header" style="background: var(--navy-deep); color: white; padding: 10rem 1rem 5rem; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 3rem; font-family: var(--font-serif); margin-bottom: 1rem;">Our Story</h1>
+      <p style="max-width: 600px; margin: 0 auto; color: var(--gold-light); font-size: 1.1rem; line-height: 1.6;">Redefining luxury fragrances for the modern explorer.</p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT CONTENT ============ -->
+  <section class="about-content" style="padding: 5rem 0;">
+    <div class="container about-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+      <div class="about-text">
+        <span class="section-label" style="display: block; margin-bottom: 0.5rem; color: var(--gold); font-weight: 600; letter-spacing: 2px; font-size: 0.8rem;">THE SCENTLAB VISION</span>
+        <h2 class="section-title-dark" style="font-family: var(--font-serif); font-size: 2.5rem; color: var(--navy); margin-bottom: 1.5rem;">Luxury Shouldn't Be Exclusive</h2>
+        <p style="margin-bottom: 1.5rem; line-height: 1.8; color: var(--gray-600);">We started ScentLab with a simple belief: everyone deserves to experience the world's most exquisite fragrances. Traditional designer perfumes often carry huge markups for the brand name alone. We decided to strip away the marketing hype and focus entirely on the juice.</p>
+        <p style="line-height: 1.8; color: var(--gray-600);">Using the finest ingredients sourced globally, our master perfumers meticulously recreate iconic scents. The result? 100% accurate, long-lasting fragrances that you can wear every day, without the guilt.</p>
+      </div>
+      <div class="about-image" style="border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+        <img src="assets/images/hero-bg.jpg" alt="Perfume Lab" style="width: 100%; height: 100%; object-fit: cover; display: block; aspect-ratio: 4/5;">
+      </div>
+    </div>
+  </section>
+
+<!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-grid container">
+      <div class="footer-brand">
+        <div class="footer-logo">Scent<span class="logo-accent">Lab</span></div>
+        <p>Premium recreations of the world's most iconic perfumes. Exceptional quality, affordable luxury — crafted for the modern fragrance lover.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+          <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Perfumes</a></li>
+          <li><a href="shop.html?gender=Men">For Him</a></li>
+          <li><a href="shop.html?gender=Women">For Her</a></li>
+          <li><a href="shop.html?gender=Unisex">Unisex</a></li>
+          <li><a href="shop.html?tag=bestseller">Best Sellers</a></li>
+          <li><a href="shop.html?tag=new">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return & Refund</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@scentlab.in">hello@scentlab.in</a></li>
+          <li><a href="tel:+919900000000">+91 99000 00000</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2024 ScentLab. All rights reserved.</p>
+      <div class="footer-payments">
+        <div class="pay-icon">VISA</div>
+        <div class="pay-icon">MC</div>
+        <div class="pay-icon">UPI</div>
+        <div class="pay-icon">GPay</div>
+        <div class="pay-icon">PP</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="google_translate_element" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="script.js"></script>
+</body>
+</html>

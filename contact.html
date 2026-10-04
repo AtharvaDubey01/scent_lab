@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ScentLab — Premium recreations of world-famous perfumes. 100+ fragrances, exceptional quality, affordable luxury.">
+  <title>ScentLab — Premium Perfume Recreations</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ============ ANNOUNCEMENT BAR ============ -->
+  <div class="announcement-bar" id="announcementBar">
+    <button class="announcement-nav prev" aria-label="Previous" onclick="changeAnnouncement(-1)">‹</button>
+    <div class="announcement-wrapper" id="announcementText">
+      <a href="shop.html">FREE Shipping on Orders Above ₹2,000 <span class="arrow-icon">→</span></a>
+    </div>
+    <button class="announcement-nav next" aria-label="Next" onclick="changeAnnouncement(1)">›</button>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Scent<span class="logo-accent">Lab</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="shop.html" class="nav-link">Shop All</a>
+        <a href="shop.html?gender=Men" class="nav-link">Men</a>
+        <a href="shop.html?gender=Women" class="nav-link">Women</a>
+        <a href="shop.html?gender=Unisex" class="nav-link">Unisex</a>
+        <a href="shop.html?tag=bestseller" class="nav-link">Best Sellers</a>
+        <a href="shop.html?tag=new" class="nav-link">New Arrivals</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Toggle -->
+        <div class="lang-toggle notranslate">
+          <span class="lang-label">EN</span>
+          <label class="switch">
+            <input type="checkbox" id="langSwitch" onchange="toggleLanguage()">
+            <span class="slider round"></span>
+          </label>
+          <span class="lang-label">AR</span>
+        </div>
+        <button class="action-btn" aria-label="Search" id="searchBtn" onclick="toggleSearch()">
+          <i data-lucide="search"></i>
+        </button>
+        <a href="cart.html" class="action-btn" aria-label="Cart" id="cartBtn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" onclick="toggleMobileMenu()">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-inner container">
+        <input type="text" id="searchInput" placeholder="Search perfumes..." autocomplete="off">
+        <button class="search-close" onclick="toggleSearch()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop All</a>
+      <a href="shop.html?gender=Men" class="mobile-nav-link">Men</a>
+      <a href="shop.html?gender=Women" class="mobile-nav-link">Women</a>
+      <a href="shop.html?gender=Unisex" class="mobile-nav-link">Unisex</a>
+      <a href="shop.html?tag=bestseller" class="mobile-nav-link">Best Sellers</a>
+      <a href="shop.html?tag=new" class="mobile-nav-link">New Arrivals</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </header>
+
+  
+
+  <style>
+    @media (max-width: 768px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      .page-header { padding: 8rem 1rem 3rem !important; }
+      .contact-form-wrapper { padding: 2rem !important; }
+    }
+  </style>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="page-header" style="background: var(--navy-deep); color: white; padding: 10rem 1rem 5rem; text-align: center;">
+    <div class="container">
+      <h1 style="font-size: 3rem; font-family: var(--font-serif); margin-bottom: 1rem;">Contact Us</h1>
+      <p style="max-width: 600px; margin: 0 auto; color: var(--gold-light); font-size: 1.1rem; line-height: 1.6;">We'd love to hear from you. Get in touch with our team.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT SECTION ============ -->
+  <section class="contact-section" style="padding: 5rem 0; background: var(--off-white);">
+    <div class="container contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+      <div class="contact-info">
+        <h2 style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 2rem; color: var(--navy);">Get in Touch</h2>
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <i data-lucide="map-pin" style="color: var(--gold); margin-top: 4px;"></i>
+            <div>
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--navy);">Our Studio</h4>
+              <p style="color: var(--gray-600); line-height: 1.6;">123 Fragrance Avenue<br>Bandra West, Mumbai 400050<br>India</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <i data-lucide="mail" style="color: var(--gold); margin-top: 4px;"></i>
+            <div>
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--navy);">Email Us</h4>
+              <p style="color: var(--gray-600); line-height: 1.6;"><a href="mailto:hello@scentlab.in" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='inherit'">hello@scentlab.in</a></p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <i data-lucide="phone" style="color: var(--gold); margin-top: 4px;"></i>
+            <div>
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--navy);">Call Us</h4>
+              <p style="color: var(--gray-600); line-height: 1.6;"><a href="tel:+919900000000" style="color: inherit; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='inherit'">+91 99000 00000</a><br><small style="color: var(--gray-400);">Mon-Fri, 9am - 6pm IST</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrapper" style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <form class="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem;" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--navy);">Name</label>
+            <input type="text" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--gray-200); border-radius: 4px; font-family: inherit; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gray-200)'" required>
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--navy);">Email</label>
+            <input type="email" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--gray-200); border-radius: 4px; font-family: inherit; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gray-200)'" required>
+          </div>
+          <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; color: var(--navy);">Message</label>
+            <textarea rows="5" style="width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--gray-200); border-radius: 4px; font-family: inherit; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--gray-200)'" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-grid container">
+      <div class="footer-brand">
+        <div class="footer-logo">Scent<span class="logo-accent">Lab</span></div>
+        <p>Premium recreations of the world's most iconic perfumes. Exceptional quality, affordable luxury — crafted for the modern fragrance lover.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+          <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Perfumes</a></li>
+          <li><a href="shop.html?gender=Men">For Him</a></li>
+          <li><a href="shop.html?gender=Women">For Her</a></li>
+          <li><a href="shop.html?gender=Unisex">Unisex</a></li>
+          <li><a href="shop.html?tag=bestseller">Best Sellers</a></li>
+          <li><a href="shop.html?tag=new">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return & Refund</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@scentlab.in">hello@scentlab.in</a></li>
+          <li><a href="tel:+919900000000">+91 99000 00000</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2024 ScentLab. All rights reserved.</p>
+      <div class="footer-payments">
+        <div class="pay-icon">VISA</div>
+        <div class="pay-icon">MC</div>
+        <div class="pay-icon">UPI</div>
+        <div class="pay-icon">GPay</div>
+        <div class="pay-icon">PP</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="google_translate_element" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="script.js"></script>
+</body>
+</html>

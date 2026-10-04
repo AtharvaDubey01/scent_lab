@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ScentLab — Premium recreations of world-famous perfumes. 100+ fragrances, exceptional quality, affordable luxury.">
+  <title>ScentLab — Premium Perfume Recreations</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ============ ANNOUNCEMENT BAR ============ -->
+  <div class="announcement-bar" id="announcementBar">
+    <button class="announcement-nav prev" aria-label="Previous" onclick="changeAnnouncement(-1)">‹</button>
+    <div class="announcement-wrapper" id="announcementText">
+      <a href="shop.html">FREE Shipping on Orders Above ₹2,000 <span class="arrow-icon">→</span></a>
+    </div>
+    <button class="announcement-nav next" aria-label="Next" onclick="changeAnnouncement(1)">›</button>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Scent<span class="logo-accent">Lab</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="shop.html" class="nav-link">Shop All</a>
+        <a href="shop.html?gender=Men" class="nav-link">Men</a>
+        <a href="shop.html?gender=Women" class="nav-link">Women</a>
+        <a href="shop.html?gender=Unisex" class="nav-link">Unisex</a>
+        <a href="shop.html?tag=bestseller" class="nav-link">Best Sellers</a>
+        <a href="shop.html?tag=new" class="nav-link">New Arrivals</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Toggle -->
+        <div class="lang-toggle notranslate">
+          <span class="lang-label">EN</span>
+          <label class="switch">
+            <input type="checkbox" id="langSwitch" onchange="toggleLanguage()">
+            <span class="slider round"></span>
+          </label>
+          <span class="lang-label">AR</span>
+        </div>
+        <button class="action-btn" aria-label="Search" id="searchBtn" onclick="toggleSearch()">
+          <i data-lucide="search"></i>
+        </button>
+        <a href="cart.html" class="action-btn" aria-label="Cart" id="cartBtn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" onclick="toggleMobileMenu()">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-inner container">
+        <input type="text" id="searchInput" placeholder="Search perfumes..." autocomplete="off">
+        <button class="search-close" onclick="toggleSearch()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop All</a>
+      <a href="shop.html?gender=Men" class="mobile-nav-link">Men</a>
+      <a href="shop.html?gender=Women" class="mobile-nav-link">Women</a>
+      <a href="shop.html?gender=Unisex" class="mobile-nav-link">Unisex</a>
+      <a href="shop.html?tag=bestseller" class="mobile-nav-link">Best Sellers</a>
+      <a href="shop.html?tag=new" class="mobile-nav-link">New Arrivals</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <img src="assets/images/hero-bg.jpg" alt="Luxury perfumes" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">PREMIUM RECREATIONS</div>
+      <h1 class="hero-title">
+        World-Famous<br>
+        <span class="highlight">Perfumes,</span> Redefined
+      </h1>
+      <p class="hero-subtitle">
+        Experience luxury fragrances crafted to match the world's most iconic scents — at a fraction of the price.
+      </p>
+      <div class="hero-ctas">
+        <a href="shop.html" class="btn-primary">SHOP COLLECTION</a>
+        <a href="shop.html?tag=bestseller" class="btn-outline-hero">BEST SELLERS</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">100+</span><span class="stat-label">Fragrances</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">10K+</span><span class="stat-label">Happy Customers</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">4.8★</span><span class="stat-label">Average Rating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST MARQUEE ============ -->
+  <section class="trust-section">
+    <div class="trust-marquee" id="trustMarquee">
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="award"></i></div><span class="trust-text">PREMIUM QUALITY</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="truck"></i></div><span class="trust-text">FREE SHIPPING ₹2,000+</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="shield-check"></i></div><span class="trust-text">100% SAFE FORMULATIONS</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="refresh-cw"></i></div><span class="trust-text">EASY RETURNS</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="clock"></i></div><span class="trust-text">LONG LASTING SCENTS</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="award"></i></div><span class="trust-text">PREMIUM QUALITY</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="truck"></i></div><span class="trust-text">FREE SHIPPING ₹2,000+</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="shield-check"></i></div><span class="trust-text">100% SAFE FORMULATIONS</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="refresh-cw"></i></div><span class="trust-text">EASY RETURNS</span></div>
+      <div class="trust-item"><div class="trust-icon"><i data-lucide="clock"></i></div><span class="trust-text">LONG LASTING SCENTS</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SHOP BY CATEGORY ============ -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">EXPLORE</span>
+        <h2 class="section-title-dark">Shop by Category</h2>
+      </div>
+      <div class="category-cards">
+        <a href="shop.html?gender=Men" class="category-card cat-men">
+          <div class="cat-content">
+            <span class="cat-label">100+ options</span>
+            <div class="cat-row">
+              <span class="cat-title">For Him</span>
+              <span class="cat-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="shop.html?gender=Women" class="category-card cat-women">
+          <div class="cat-content">
+            <span class="cat-label">100+ options</span>
+            <div class="cat-row">
+              <span class="cat-title">For Her</span>
+              <span class="cat-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="shop.html?gender=Unisex" class="category-card cat-unisex">
+          <div class="cat-content">
+            <span class="cat-label">Share the love</span>
+            <div class="cat-row">
+              <span class="cat-title">Unisex</span>
+              <span class="cat-arrow">→</span>
+            </div>
+          </div>
+        </a>
+        <a href="shop.html?tag=new" class="category-card cat-new">
+          <div class="cat-content">
+            <span class="cat-label">Just dropped</span>
+            <div class="cat-row">
+              <span class="cat-title">New Arrivals</span>
+              <span class="cat-arrow">→</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEST SELLERS ============ -->
+  <section class="products-row-section" id="bestSellersSection">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">TOP PICKS</span>
+        <h2 class="section-title-dark">Best Sellers</h2>
+        <a href="shop.html?tag=bestseller" class="section-link">View All →</a>
+      </div>
+      <div class="products-slider-wrapper">
+        <button class="slider-arrow prev" onclick="slideProducts('bestsellers-slider', -1)">‹</button>
+        <div class="products-slider" id="bestsellers-slider"></div>
+        <button class="slider-arrow next" onclick="slideProducts('bestsellers-slider', 1)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANNER — SHOP BY SCENT ============ -->
+  <section class="scent-families-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FIND YOUR SCENT</span>
+        <h2 class="section-title-dark">Shop by Scent Family</h2>
+      </div>
+      <div class="scent-grid">
+        <a href="shop.html?category=Woody" class="scent-card scent-woody">
+          <div class="scent-content">
+            <span class="scent-name">Woody</span>
+          </div>
+        </a>
+        <a href="shop.html?category=Floral" class="scent-card scent-floral">
+          <div class="scent-content">
+            <span class="scent-name">Floral</span>
+          </div>
+        </a>
+        <a href="shop.html?category=Oriental" class="scent-card scent-oriental">
+          <div class="scent-content">
+            <span class="scent-name">Oriental</span>
+          </div>
+        </a>
+        <a href="shop.html?category=Fresh" class="scent-card scent-fresh">
+          <div class="scent-content">
+            <span class="scent-name">Fresh</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEW ARRIVALS ============ -->
+  <section class="products-row-section alt-bg" id="newArrivalsSection">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">JUST DROPPED</span>
+        <h2 class="section-title-dark">New Arrivals</h2>
+        <a href="shop.html?tag=new" class="section-link">View All →</a>
+      </div>
+      <div class="products-slider-wrapper">
+        <button class="slider-arrow prev" onclick="slideProducts('newarrivals-slider', -1)">‹</button>
+        <div class="products-slider" id="newarrivals-slider"></div>
+        <button class="slider-arrow next" onclick="slideProducts('newarrivals-slider', 1)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRENDING ============ -->
+  <section class="products-row-section" id="trendingSection">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">MOST LOVED</span>
+        <h2 class="section-title-dark">Trending Now</h2>
+        <a href="shop.html?tag=trending" class="section-link">View All →</a>
+      </div>
+      <div class="products-slider-wrapper">
+        <button class="slider-arrow prev" onclick="slideProducts('trending-slider', -1)">‹</button>
+        <div class="products-slider" id="trending-slider"></div>
+        <button class="slider-arrow next" onclick="slideProducts('trending-slider', 1)">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY SCENTLAB ============ -->
+  <section class="why-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">WHY US</span>
+        <h2 class="section-title-dark">The ScentLab Difference</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="flask-conical"></i></div>
+          <h3>Expert Craftsmanship</h3>
+          <p>Each fragrance is meticulously crafted to capture the essence of world-famous perfumes with premium ingredients.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="indian-rupee"></i></div>
+          <h3>Affordable Luxury</h3>
+          <p>Experience designer-quality scents at a fraction of the retail price — starting from just ₹349.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="clock"></i></div>
+          <h3>Long Lasting</h3>
+          <p>Our concentrated formulations deliver 8-12 hours of projection and sillage on skin.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><i data-lucide="shield-check"></i></div>
+          <h3>Skin Safe</h3>
+          <p>All fragrances are dermatologically tested, IFRA-compliant, and safe for daily wear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BANNER ============ -->
+  <section class="cta-banner">
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <h2>Find Your Signature Scent</h2>
+      <p>Over 100 premium recreations waiting to be discovered</p>
+      <a href="shop.html" class="btn-primary">BROWSE ALL PERFUMES</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-grid container">
+      <div class="footer-brand">
+        <div class="footer-logo">Scent<span class="logo-accent">Lab</span></div>
+        <p>Premium recreations of the world's most iconic perfumes. Exceptional quality, affordable luxury — crafted for the modern fragrance lover.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+          <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">All Perfumes</a></li>
+          <li><a href="shop.html?gender=Men">For Him</a></li>
+          <li><a href="shop.html?gender=Women">For Her</a></li>
+          <li><a href="shop.html?gender=Unisex">Unisex</a></li>
+          <li><a href="shop.html?tag=bestseller">Best Sellers</a></li>
+          <li><a href="shop.html?tag=new">New Arrivals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return & Refund</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@scentlab.in">hello@scentlab.in</a></li>
+          <li><a href="tel:+919900000000">+91 99000 00000</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2024 ScentLab. All rights reserved.</p>
+      <div class="footer-payments">
+        <div class="pay-icon">VISA</div>
+        <div class="pay-icon">MC</div>
+        <div class="pay-icon">UPI</div>
+        <div class="pay-icon">GPay</div>
+        <div class="pay-icon">PP</div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="google_translate_element" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="script.js"></script>
+</body>
+</html>

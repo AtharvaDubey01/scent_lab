@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ScentLab — Browse 100+ premium perfume recreations. Filter by brand, gender, scent family, and more.">
+  <title>Shop All Perfumes — ScentLab</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ============ ANNOUNCEMENT BAR ============ -->
+  <div class="announcement-bar" id="announcementBar">
+    <button class="announcement-nav prev" aria-label="Previous" onclick="changeAnnouncement(-1)">‹</button>
+    <div class="announcement-wrapper" id="announcementText">
+      <a href="#">FREE Shipping on Orders Above ₹2,000 <span class="arrow-icon">→</span></a>
+    </div>
+    <button class="announcement-nav next" aria-label="Next" onclick="changeAnnouncement(1)">›</button>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-text">Scent<span class="logo-accent">Lab</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link active">Shop All</a>
+        <a href="shop.html?gender=Men" class="nav-link">Men</a>
+        <a href="shop.html?gender=Women" class="nav-link">Women</a>
+        <a href="shop.html?gender=Unisex" class="nav-link">Unisex</a>
+        <a href="shop.html?tag=bestseller" class="nav-link">Best Sellers</a>
+        <a href="shop.html?tag=new" class="nav-link">New Arrivals</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <!-- Language Toggle -->
+        <div class="lang-toggle notranslate">
+          <span class="lang-label">EN</span>
+          <label class="switch">
+            <input type="checkbox" id="langSwitch" onchange="toggleLanguage()">
+            <span class="slider round"></span>
+          </label>
+          <span class="lang-label">AR</span>
+        </div>
+        <button class="action-btn" aria-label="Search" onclick="toggleSearch()"><i data-lucide="search"></i></button>
+        <a href="cart.html" class="action-btn" aria-label="Cart">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" onclick="toggleMobileMenu()"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-inner container">
+        <input type="text" id="searchInput" placeholder="Search perfumes..." autocomplete="off">
+        <button class="search-close" onclick="toggleSearch()"><i data-lucide="x"></i></button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link active">Shop All</a>
+      <a href="shop.html?gender=Men" class="mobile-nav-link">Men</a>
+      <a href="shop.html?gender=Women" class="mobile-nav-link">Women</a>
+      <a href="shop.html?gender=Unisex" class="mobile-nav-link">Unisex</a>
+      <a href="shop.html?tag=bestseller" class="mobile-nav-link">Best Sellers</a>
+      <a href="shop.html?tag=new" class="mobile-nav-link">New Arrivals</a>
+    </nav>
+  </header>
+
+  <!-- ============ SHOP CONTENT ============ -->
+  <main class="shop-page">
+    <!-- Page Header -->
+    <div class="shop-header">
+      <div class="container">
+        <h1 id="shopTitle">All Perfumes</h1>
+        <p id="shopSubtitle">Browse our complete collection of 100+ premium fragrance recreations</p>
+      </div>
+    </div>
+
+    <div class="shop-layout container">
+      <!-- Sidebar Filters -->
+      <aside class="shop-sidebar" id="shopSidebar">
+        <div class="sidebar-header">
+          <h3>Filters</h3>
+          <button class="clear-filters" id="clearFilters" onclick="clearAllFilters()">Clear All</button>
+        </div>
+
+        <!-- Search within shop -->
+        <div class="filter-group">
+          <label class="filter-label">Search</label>
+          <input type="text" class="shop-search" id="shopSearch" placeholder="Search by name or brand..." oninput="applyFilters()">
+        </div>
+
+        <!-- Gender -->
+        <div class="filter-group">
+          <h4 class="filter-label" onclick="toggleFilterGroup(this)">Gender <span class="filter-chevron">▾</span></h4>
+          <div class="filter-options" id="genderFilters">
+            <label class="filter-check"><input type="checkbox" value="Men" onchange="applyFilters()"> Men</label>
+            <label class="filter-check"><input type="checkbox" value="Women" onchange="applyFilters()"> Women</label>
+            <label class="filter-check"><input type="checkbox" value="Unisex" onchange="applyFilters()"> Unisex</label>
+          </div>
+        </div>
+
+        <!-- Scent Family -->
+        <div class="filter-group">
+          <h4 class="filter-label" onclick="toggleFilterGroup(this)">Scent Family <span class="filter-chevron">▾</span></h4>
+          <div class="filter-options" id="categoryFilters">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Brand -->
+        <div class="filter-group">
+          <h4 class="filter-label" onclick="toggleFilterGroup(this)">Inspired By <span class="filter-chevron">▾</span></h4>
+          <div class="filter-options scrollable" id="brandFilters">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="filter-group">
+          <h4 class="filter-label" onclick="toggleFilterGroup(this)">Price Range <span class="filter-chevron">▾</span></h4>
+          <div class="filter-options" id="priceFilters">
+            <label class="filter-check"><input type="checkbox" value="0-500" onchange="applyFilters()"> Under ₹500</label>
+            <label class="filter-check"><input type="checkbox" value="500-1000" onchange="applyFilters()"> ₹500 – ₹1,000</label>
+            <label class="filter-check"><input type="checkbox" value="1000-2000" onchange="applyFilters()"> ₹1,000 – ₹2,000</label>
+            <label class="filter-check"><input type="checkbox" value="2000-99999" onchange="applyFilters()"> ₹2,000+</label>
+          </div>
+        </div>
+
+        <button class="btn-primary sidebar-apply" onclick="closeMobileSidebar()">Apply Filters</button>
+      </aside>
+
+      <!-- Product Grid -->
+      <div class="shop-main">
+        <!-- Toolbar -->
+        <div class="shop-toolbar">
+          <div class="toolbar-left">
+            <button class="filter-toggle-btn" onclick="openMobileSidebar()"><i data-lucide="sliders-horizontal"></i> Filters</button>
+            <span class="results-count" id="resultsCount">0 products</span>
+          </div>
+          <div class="toolbar-right">
+            <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+              <option value="default">Sort by: Featured</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="name-asc">Name: A to Z</option>
+              <option value="name-desc">Name: Z to A</option>
+              <option value="newest">Newest First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active filters -->
+        <div class="active-filters" id="activeFilters"></div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="productGrid">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-grid container">
+      <div class="footer-brand">
+        <div class="footer-logo">Scent<span class="logo-accent">Lab</span></div>
+        <p>Premium recreations of the world's most iconic perfumes. Exceptional quality, affordable luxury.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="shop.html">All Perfumes</a></li><li><a href="shop.html?gender=Men">For Him</a></li><li><a href="shop.html?gender=Women">For Her</a></li><li><a href="shop.html?tag=bestseller">Best Sellers</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Track Order</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Privacy</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:hello@scentlab.in">hello@scentlab.in</a></li><li><a href="about.html">About Us</a></li><li><a href="#">FAQ</a></li></ul></div>
+    </div>
+    <div class="footer-bottom container">
+      <p>&copy; 2024 ScentLab. All rights reserved.</p>
+      <div class="footer-payments"><div class="pay-icon">VISA</div><div class="pay-icon">MC</div><div class="pay-icon">UPI</div><div class="pay-icon">GPay</div></div>
+    </div>
+  </footer>
+
+  <!-- Sidebar overlay for mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMobileSidebar()"></div>
+
+  <div id="google_translate_element" style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ar,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="script.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>
